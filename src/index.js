@@ -7,13 +7,13 @@ import Dashboard from './Dashboard'
 import ViewText from './ViewText'
 import NotFoundPage from './NotFoundPage'
 import * as serviceWorker from './serviceWorker';
-console.log("ccc")
+
 const routes = (
   <BrowserRouter>
     <Header />
     <Switch>
-      <Route path="/" exact component={Dashboard} />
-      <Route path="/view" component={ViewText} />
+      <Route path="/" exact={true} component={Dashboard} />
+      <Route path="/view/:id" component={ViewText} />
       <Route component={NotFoundPage} />
     </Switch>
   </BrowserRouter>
