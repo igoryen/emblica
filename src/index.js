@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './index.css';
+import Header from './Header'
 import Dashboard from './Dashboard'
 import ViewText from './ViewText'
 import NotFoundPage from './NotFoundPage'
@@ -9,6 +10,7 @@ import * as serviceWorker from './serviceWorker';
 console.log("ccc")
 const routes = (
   <BrowserRouter>
+    <Header />
     <Switch>
       <Route path="/" exact component={Dashboard} />
       <Route path="/view" component={ViewText} />
