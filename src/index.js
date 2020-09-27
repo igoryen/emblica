@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
 import { addInterlinear } from './actions/interlinears'
-import { setTextFilter } from './actions/filters'
 import getVisibleInterlinears from './selectors/interlinears'
 import AppRouter from './routers/AppRouter';
 import './index.css';
@@ -70,12 +69,6 @@ store.dispatch(addInterlinear(
     ]
   }
 ))
-
-store.dispatch(setTextFilter('s')) // used on title
-
-setTimeout( () => {
-  store.dispatch( setTextFilter( 'r' ) )
-}, 3000 )
 
 const state = store.getState()
 const visibleInterlinears = getVisibleInterlinears(state.interlinears, state.filters)
