@@ -1,8 +1,17 @@
 export default (interlinears, { text, sortBy }) => {
     return interlinears.filter((interlinear) => {
-        const textMatch = interlinear.title.toLowerCase().includes(text.toLowerCase())
+        let textMatch = ''
+        if(sortBy === 'title') {
+            textMatch = interlinear.title.toLowerCase().includes(text.toLowerCase())
+        } else if (sortBy === 'date') {
+            textMatch = interlinear.date.toLowerCase().includes(text.toLowerCase())
+        }
         return textMatch
     }).sort((a, b) => {
-        return a.title < b.title ? 1 : -1
+        if(sortBy === 'title') {
+            return a.title < b.title ? -1 : 1
+        } else if ( sortBy === 'date') {
+            return a.date < b.date ? 1 : -1
+        }
     })
 }

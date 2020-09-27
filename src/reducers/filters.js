@@ -3,7 +3,7 @@ const filtersReducerDefaultState = {
     sortBy: 'title'
 }
 
-export default ( state = filtersReducerDefaultState, action ) => {
+export default (state = filtersReducerDefaultState, action) => {
     switch (action.type) {
         case 'SET_TEXT_FILTER':
             return {
@@ -14,6 +14,11 @@ export default ( state = filtersReducerDefaultState, action ) => {
             return {
                 ...state,
                 sortBy: 'title'
+            }
+        case 'SORT_BY_DATE':
+            return {
+                ...state,
+                sortBy: 'date'
             }
         default:
             return state

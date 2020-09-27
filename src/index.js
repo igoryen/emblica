@@ -13,6 +13,7 @@ const store = configureStore()
 store.dispatch(addInterlinear(
   {
     title: 'first',
+    date: '1',
     lines: [
       {
         "one": "apple",
@@ -33,6 +34,7 @@ store.dispatch(addInterlinear(
 store.dispatch(addInterlinear(
   {
     title: 'second',
+    date: '2',
     lines: [
       {
         "one": "cabbage",
@@ -53,6 +55,7 @@ store.dispatch(addInterlinear(
 store.dispatch(addInterlinear(
   {
     title: 'third',
+    date: '3',
     lines: [
       {
         "one": "grapes",

@@ -4,6 +4,7 @@ export const addInterlinear = (
     {
         title = '',
         lines = '',
+        date = ''
     } = {}
 ) => (
     {
@@ -11,7 +12,8 @@ export const addInterlinear = (
         interlinear: {
             id: uuidv4(),
             title,
-            lines
+            lines,
+            date
         }
     }
 )

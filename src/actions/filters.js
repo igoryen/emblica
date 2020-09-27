@@ -10,3 +10,10 @@ export const sortByTitle = () => (
         type: 'SORT_BY_TITLE'
     }
 )
+
+export const sortByDate = () => (
+    {
+        type: 'SORT_BY_DATE'
+    }
+)
+
