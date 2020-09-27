@@ -1,9 +1,9 @@
 import React from 'react'
+import InterlinearList from './InterlinearList'
 
 export const Dashboard = (props) => (
     <div>
-        hello from Dashboard
-        <input type="text" placeholder="search texts"/>    
+        <InterlinearList />
     </div>
 )
 
