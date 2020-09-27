@@ -51,6 +51,26 @@ store.dispatch(addInterlinear(
   }
 ))
 
+store.dispatch(addInterlinear(
+  {
+    title: 'third',
+    lines: [
+      {
+        "one": "grapes",
+        "two": "виноград"
+      },
+      {
+        "one": "pear",
+        "two": "груша"
+      },
+      {
+        "one": "orange",
+        "two": "апельсин"
+      }
+    ]
+  }
+))
+
 store.dispatch(setTextFilter('s')) // used on title
 const state = store.getState()
 const visibleInterlinears = getVisibleInterlinears(state.interlinears, state.filters)

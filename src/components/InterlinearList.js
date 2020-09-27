@@ -4,13 +4,13 @@ import { connect } from 'react-redux'
 const InterlinearList = (props) => (
     <div>
         <h1>List of Interlinears</h1>
-        {props.name}
+        {props.interlinears.length}
     </div>
 )
 
 const ConnectedInterlinearList = connect((state) => {
     return {
-        name: 'Igor'
+        interlinears: state.interlinears
     }
 })(InterlinearList)
 
