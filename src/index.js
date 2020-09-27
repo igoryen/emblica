@@ -72,6 +72,11 @@ store.dispatch(addInterlinear(
 ))
 
 store.dispatch(setTextFilter('s')) // used on title
+
+setTimeout( () => {
+  store.dispatch( setTextFilter( 'r' ) )
+}, 3000 )
+
 const state = store.getState()
 const visibleInterlinears = getVisibleInterlinears(state.interlinears, state.filters)
 console.log('visibleInterlinears', visibleInterlinears)
