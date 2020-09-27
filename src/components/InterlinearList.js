@@ -8,10 +8,10 @@ const InterlinearList = (props) => (
     </div>
 )
 
-const ConnectedInterlinearList = connect((state) => {
+const mapStateToProps = (state) => {
     return {
         interlinears: state.interlinears
     }
-})(InterlinearList)
+}
 
-export default ConnectedInterlinearList
+export default connect(mapStateToProps)(InterlinearList)
