@@ -1,9 +1,9 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Header from '../Header'
-import Dashboard from '../Dashboard'
-import ViewText from '../ViewText'
-import NotFoundPage from '../NotFoundPage'
+import Header from '../components/Header'
+import Dashboard from '../components/Dashboard'
+import ViewText from '../components/ViewText'
+import NotFoundPage from '../components/NotFoundPage'
 
 const AppRouter = () => (
     <BrowserRouter>
