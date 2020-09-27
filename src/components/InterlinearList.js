@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import InterlinearListItem from './InterlinearListItem'
+import selectInterlinears from '../selectors/interlinears'
 
 const InterlinearList = (props) => (
     <div>
@@ -10,14 +11,12 @@ const InterlinearList = (props) => (
                 return <InterlinearListItem key={interlinear.id} {...interlinear} />
             })
         }
-        {props.filters.text} | {props.interlinears.length}
     </div>
 )
 
 const mapStateToProps = (state) => {
     return {
-        interlinears: state.interlinears,
-        filters: state.filters
+        interlinears: selectInterlinears(state.interlinears, state.filters)
     }
 }
 
