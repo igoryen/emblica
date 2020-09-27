@@ -13,3 +13,15 @@ code {
 .is-active {
   font-weight: bold;
 }
+
+.lines {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.word-column {
+  display: flex;
+  flex-direction: column;
+  margin: 0 1em 1em 0;
+}

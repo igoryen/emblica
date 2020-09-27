@@ -1,9 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
 
-const InterlinearListItem = ({id, title, date}) => (
+const InterlinearListItem = ({ id, title, date }) => (
     <div>
-        <span>{date}</span>) <span>{title}</span> : <span>{id}</span>
+        <Link to={`/view/${id}`}>
+            <span>{date}</span>) <span>{title}</span> : <span>{id}</span>
+        </Link>
+
     </div>
 )
 
-export default InterlinearListItem
+export default connect()(InterlinearListItem)
