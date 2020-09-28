@@ -17,3 +17,18 @@ export const addInterlinear = (
         }
     }
 )
+
+export const removeInterlinear = ({ id } = {}) => (
+    {
+        type: 'REMOVE_INTERLINEAR',
+        id
+    }
+)
+
+export const editInterlinear = (id, updates) => (
+    {
+        type: 'EDIT_INTERLINEAR',
+        id,
+        updates
+    }
+)
