@@ -14,7 +14,7 @@ store.dispatch(addInterlinear(
   {
     id: 'aaaaaa',
     title: 'first',
-    date: '1',
+    createdAt: 1601409341560,
     lines: [
       {
         "one": "…",
@@ -432,7 +432,7 @@ store.dispatch(addInterlinear(
   {
     id: 'bbbbbb',
     title: 'second',
-    date: '2',
+    createdAt: 1601409341550,
     lines: [
       {
         "one": "¡Llama,",
@@ -846,7 +846,7 @@ store.dispatch(addInterlinear(
   {
     id: 'cccccccc',
     title: 'third',
-    date: '3',
+    createdAt: 1601409341540,
     lines: [
       {
         "one": "¡En",

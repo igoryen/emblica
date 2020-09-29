@@ -3,8 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 export const addInterlinear = (
     {
         title = '',
-        lines = '',
-        date = ''
+        createdAt = 0
     } = {}
 ) => (
     {
@@ -12,8 +11,7 @@ export const addInterlinear = (
         interlinear: {
             id: uuidv4(),
             title,
-            lines,
-            date
+            createdAt
         }
     }
 )
