@@ -1,17 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { removeInterlinear } from '../actions/interlinears';
 
-const InterlinearListItem = ({ dispatch, id, title, createdAt }) => (
+const InterlinearListItem = ({ id, title, createdAt, lines }) => (
     <div>
-        <Link to={`/edit/${id}`}>
+        <Link to={`/view/${id}`}>
             <span>{createdAt}</span>) <span>{title}</span> : <span>{id}</span>
         </Link>
-        <button onClick={() => {
-            dispatch(removeInterlinear({ id }))
-        }}>Remove</button>
-
     </div>
 )
 

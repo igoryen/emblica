@@ -4,7 +4,11 @@ import Header from '../components/Header'
 import Dashboard from '../components/Dashboard'
 import AddInterlinearPage from '../components/AddInterlinearPage'
 import NotFoundPage from '../components/NotFoundPage'
+import ViewInterlinearPage from '../components/ViewInterlinearPage'
 import EditInterlinearPage from '../components/EditInterlinearPage'
+import { createBrowserHistory } from 'history';
+
+export const history = createBrowserHistory()
 
 const AppRouter = () => (
     <BrowserRouter>
@@ -13,6 +17,7 @@ const AppRouter = () => (
             <Switch>
                 <Route path="/" exact={true} component={Dashboard} />
                 <Route path="/add" component={AddInterlinearPage} />
+                <Route path="/view/:id" component={ViewInterlinearPage} />
                 <Route path="/edit/:id" component={EditInterlinearPage} />
                 <Route component={NotFoundPage} />
             </Switch>
@@ -20,4 +25,4 @@ const AppRouter = () => (
     </BrowserRouter>
 );
 
-export default AppRouter; 
+export default AppRouter;

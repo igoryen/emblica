@@ -3,7 +3,8 @@ import { v4 as uuidv4 } from 'uuid'
 export const addInterlinear = (
     {
         title = '',
-        createdAt = 0
+        createdAt = 0,
+        lines = []
     } = {}
 ) => (
     {
@@ -11,17 +12,19 @@ export const addInterlinear = (
         interlinear: {
             id: uuidv4(),
             title,
-            createdAt
+            createdAt,
+            lines
         }
     }
 )
 
-export const removeInterlinear = ({ id } = {}) => (
-    {
+export const removeInterlinear = ({ id } = {}) => {
+    // console.log("removeInterlinear", id)
+    return {
         type: 'REMOVE_INTERLINEAR',
         id
     }
-)
+}
 
 export const editInterlinear = (id, updates) => (
     {
