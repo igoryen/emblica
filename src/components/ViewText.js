@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
-import { removeInterlinear } from '../actions/interlinears'
+import { startRemoveInterlinear } from '../actions/interlinears'
 
 export class ViewText extends React.Component {
 
@@ -17,7 +17,7 @@ export class ViewText extends React.Component {
     }
 
     onRemove = () => {
-        this.props.dispatch(removeInterlinear({
+        this.props.dispatch(startRemoveInterlinear({
             id: this.props.interlinear.id
         }))
         this.textIsRemoved = true

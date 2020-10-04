@@ -20,6 +20,8 @@ export default (state = interlinearsReducerDefaultState, action) => {
                     return interlinear
                 }
             })
+        case 'SET_INTERLINEARS':
+            return action.interlinears
         default:
             return state
     }

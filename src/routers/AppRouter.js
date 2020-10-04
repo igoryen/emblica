@@ -1,28 +1,30 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Header from '../components/Header'
+import { Router, Route, Switch } from 'react-router-dom'
+import { createBrowserHistory } from 'history'
 import Dashboard from '../components/Dashboard'
 import AddInterlinearPage from '../components/AddInterlinearPage'
-import NotFoundPage from '../components/NotFoundPage'
-import ViewInterlinearPage from '../components/ViewInterlinearPage'
 import EditInterlinearPage from '../components/EditInterlinearPage'
-import { createBrowserHistory } from 'history';
+import ViewInterlinearPage from '../components/ViewInterlinearPage'
+import NotFoundPage from '../components/NotFoundPage'
+import LoginPage from '../components/LoginPage'
+import PrivateRoute from './PrivateRoute'
+import PublicRoute from './PublicRoute'
 
 export const history = createBrowserHistory()
 
 const AppRouter = () => (
-    <BrowserRouter>
+    <Router history={history}>
         <div>
-            <Header />
             <Switch>
-                <Route path="/" exact={true} component={Dashboard} />
-                <Route path="/add" component={AddInterlinearPage} />
-                <Route path="/view/:id" component={ViewInterlinearPage} />
-                <Route path="/edit/:id" component={EditInterlinearPage} />
+                <PublicRoute path="/" component={LoginPage} exact={true} />
+                <PrivateRoute path="/dashboard" component={Dashboard} />
+                <PrivateRoute path="/add" component={AddInterlinearPage} />
+                <PrivateRoute path="/view/:id" component={ViewInterlinearPage} />
+                <PrivateRoute path="/edit/:id" component={EditInterlinearPage} />
                 <Route component={NotFoundPage} />
             </Switch>
         </div>
-    </BrowserRouter>
-);
+    </Router>
+)
 
-export default AppRouter;
+export default AppRouter

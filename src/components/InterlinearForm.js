@@ -41,7 +41,6 @@ export default class InterlinearForm extends React.Component {
             lines: this.state.lines,
             createdAt: this.state.createdAt.valueOf()
          })
-         console.log('submitted')
       }
    }
 

@@ -1,22 +1,33 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import InterlinearForm from './InterlinearForm'
-import { editInterlinear } from '../actions/interlinears'
+import { startEditInterlinear, startRemoveInterlinear } from '../actions/interlinears'
 
-const EditInterlinearPage = (props) => {
-    return (
-        <div>
-            <h3>Edit interlinear text</h3>
-            <InterlinearForm 
-                interlinear={props.interlinear}
-                onSubmit={(interlinear) => {
-                    props.dispatch(editInterlinear(props.interlinear.id, interlinear))
-                    props.history.push('/')
-                    console.log('updated', interlinear)
-                }}
-            />
-        </div>
-    )
+export class EditInterlinearPage extends React.Component {
+
+    onSubmit = (interlinear) => {
+        this.props.startEditInterlinear(this.props.interlinear.id, interlinear)
+        this.props.history.push('/')
+        // console.log('updated', interlinear)
+    }
+
+    onRemove = () => {
+        this.props.startRemoveInterlinear({ id: this.props.interlinear.id })
+        this.props.history.push('/')
+    }
+
+    render() {
+        return (
+            <div>
+                <h3>Edit interlinear text</h3>
+                <InterlinearForm
+                    interlinear={this.props.interlinear}
+                    onSubmit={this.onSubmit}
+                />
+                <button onClick={this.onRemove}>Remove</button>
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = (state, props) => {
@@ -27,4 +38,9 @@ const mapStateToProps = (state, props) => {
     }
 }
 
-export default connect(mapStateToProps)(EditInterlinearPage)
+const mapDispatchToProps = (dispatch, props) => ({
+    startEditInterlinear: (id, interlinear) => dispatch(startEditInterlinear(id, interlinear)),
+    startRemoveInterlinear: (data) => dispatch(startRemoveInterlinear(data))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditInterlinearPage)
