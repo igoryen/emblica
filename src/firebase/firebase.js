@@ -10,9 +10,9 @@ var firebaseConfig = {
     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
     measurementId: process.env.REACT_APP_MEASUREMENT_ID
 }
-console.log("process.env.REACT_APP_PROJECT_ID:", process.env.REACT_APP_PROJECT_ID)
-console.log("process.env.REACT_APP_NAME:", process.env.REACT_APP_NAME)
-console.log("firebaseConfig:", firebaseConfig)
+// console.log("process.env.REACT_APP_PROJECT_ID:", process.env.REACT_APP_PROJECT_ID)
+// console.log("process.env.REACT_APP_NAME:", process.env.REACT_APP_NAME)
+// console.log("firebaseConfig:", firebaseConfig)
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig)
