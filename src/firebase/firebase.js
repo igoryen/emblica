@@ -12,6 +12,7 @@ var firebaseConfig = {
 }
 console.log("process.env.REACT_APP_PROJECT_ID:", process.env.REACT_APP_PROJECT_ID)
 console.log("process.env.REACT_APP_NAME:", process.env.REACT_APP_NAME)
+console.log("firebaseConfig:", firebaseConfig)
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig)
