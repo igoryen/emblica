@@ -49,11 +49,11 @@ code {
 /*****/
 
 .header {
-  background-color: #FFDA9A;
+  background-color: #ffda9a;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: .5em;
+  padding: 0.5em;
 }
 
 .list-item__lang-main {
@@ -75,4 +75,16 @@ code {
 
 .emblica-body {
   padding: 0 0.3em;
+}
+
+.text-title {
+  color: #af3a00;
+  /* padding: .3em 0; */
+}
+
+.text-controls {
+  background-color: #ffda9a;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
 }

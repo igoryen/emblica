@@ -6,10 +6,10 @@ import moment from 'moment'
 const InterlinearListItem = ({ id, mainlang, mainauthor, title, createdAt,  }) => (
     <div className="list-item">
         <span className="list-item__lang-main">{mainlang}</span>
-        <span className="list-item__author">{mainauthor}</span>
         <Link to={`/view/${id}`}>
             <span className="list-item__link">{title}</span>
         </Link>
+        <span className="list-item__author">{mainauthor}</span>
         <span className="list-item__date">{moment(createdAt).format('YYYY-MM-DD HH:mm:ss')}</span>
     </div>
 )

@@ -46,10 +46,12 @@ export class ViewText extends React.Component {
 
             return (
                 <div className="emblica-body">
-                    <h2>{this.state.title}</h2>
+                    <div className="text-title"><h2>{this.state.title}</h2></div>
                     <div className="lines">{thelines}</div>
-                    <Link to={`/edit/${this.state.id}`}>Edit text</Link>
-                    <button onClick={this.onRemove}>Remove</button>
+                    <div className="text-controls">
+                        <Link to={`/edit/${this.state.id}`}>Edit text</Link>
+                        <button onClick={this.onRemove}>Remove</button>
+                    </div>
                 </div>
             )
         }
