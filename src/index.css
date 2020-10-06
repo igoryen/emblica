@@ -20,6 +20,11 @@ code {
   flex-wrap: wrap;
 }
 
+.lines hr {
+  border: none;
+  width: 100%;
+}
+
 .word-column {
   display: flex;
   flex-direction: column;
