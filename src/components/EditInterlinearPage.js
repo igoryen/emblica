@@ -18,7 +18,7 @@ export class EditInterlinearPage extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="emblica-body">
                 <h3>Edit interlinear text</h3>
                 <InterlinearForm
                     interlinear={this.props.interlinear}

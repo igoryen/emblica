@@ -10,7 +10,7 @@ export const InterlinearsSummary = ({ interlinearCount, interlinearsTotal }) => 
     return (
         <div>
             <div>
-                <h1>Viewing <span>{interlinearCount}</span> {interlinearWord}</h1>
+                <h4>Viewing <span>{interlinearCount}</span> {interlinearWord}</h4>
                 <div>
                     <Link to="/add">Add interlinear</Link>
                 </div>

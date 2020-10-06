@@ -5,7 +5,6 @@ import ViewText from './ViewText'
 const ViewInterlinearPage = (props) => {
     return (
         <div>
-            <h3>"View Interlinear" page</h3>
             <ViewText 
                 interlinear={props.interlinear}
             />

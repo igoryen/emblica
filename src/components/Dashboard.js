@@ -4,7 +4,7 @@ import InterlinearListFilters from './InterlinearListFilters'
 import { InterlinearsSummary } from './InterlinearsSummary'
 
 export const Dashboard = (props) => (
-    <div>
+    <div className="emblica-body">
         <InterlinearsSummary />
         <InterlinearListFilters />
         <InterlinearList />

@@ -10,7 +10,7 @@ export class AddInterlinearPage extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="emblica-body">
                 <h3>Add your interlinear text</h3>
                 <InterlinearForm
                     onSubmit={this.onSubmit}

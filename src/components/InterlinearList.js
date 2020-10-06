@@ -5,7 +5,7 @@ import selectInterlinears from '../selectors/interlinears'
 
 const InterlinearList = (props) => (
     <div>
-        <h1>List of Interlinears</h1>
+        <h3>List of Interlinears</h3>
         {
             props.interlinears.map((interlinear) => {
                 return <InterlinearListItem key={interlinear.id} {...interlinear} />

@@ -1,12 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
+import moment from 'moment'
 
 const InterlinearListItem = ({ id, mainlang, mainauthor, title, createdAt,  }) => (
-    <div>
+    <div className="list-item">
+        <span className="list-item__lang-main">{mainlang}</span>
+        <span className="list-item__author">{mainauthor}</span>
         <Link to={`/view/${id}`}>
-            (<span>{mainlang}</span>) - <span>{mainauthor}</span> - <span>{title}</span> - <span>{createdAt}</span> : <span>{id}</span>
+            <span className="list-item__link">{title}</span>
         </Link>
+        <span className="list-item__date">{moment(createdAt).format('YYYY-MM-DD HH:mm:ss')}</span>
     </div>
 )
 

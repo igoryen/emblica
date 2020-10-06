@@ -45,9 +45,8 @@ export class ViewText extends React.Component {
             })
 
             return (
-                <div>
-                    <pre>Hello from ViewText</pre>
-                    <h1>{this.state.title}</h1>
+                <div className="emblica-body">
+                    <h2>{this.state.title}</h2>
                     <div className="lines">{thelines}</div>
                     <Link to={`/edit/${this.state.id}`}>Edit text</Link>
                     <button onClick={this.onRemove}>Remove</button>
