@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setTextFilter, sortByTitle, sortByDate } from '../actions/filters'
+import { setTextFilter, sortByTitle, sortByDate, sortByMainLang } from '../actions/filters'
 
 const InterlinearListFilters = (props) => (
     <div>
@@ -18,11 +18,14 @@ const InterlinearListFilters = (props) => (
                     props.dispatch(sortByTitle())
                 } else if (e.target.value === 'date') {
                     props.dispatch(sortByDate())
+                } else if (e.target.value === 'mainlang') {
+                    props.dispatch(sortByMainLang())
                 }
             }}
         >
             <option value="title">Title</option>
             <option value="date">Date</option>
+            <option value="mainlang">Main language</option>
         </select>
     </div>
 )

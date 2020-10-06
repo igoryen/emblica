@@ -17,3 +17,9 @@ export const sortByDate = () => (
     }
 )
 
+export const sortByMainLang = () => (
+    {
+        type: 'SORT_BY_MAIN_LANG'
+    }
+)
+

@@ -12,11 +12,12 @@ export const startAddInterlinear = (interlinearData = {}) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid
         const {
+            mainlang = '',
             title = '',
             lines = [],
             createdAt = 0
         } = interlinearData
-        const interlinear = { title, lines, createdAt }
+        const interlinear = { mainlang, title, lines, createdAt }
 
         return database.ref(`users/${uid}/interlinears`).push(interlinear).then((ref) => {
             dispatch(addInterlinear(

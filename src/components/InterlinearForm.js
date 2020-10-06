@@ -6,9 +6,18 @@ export default class InterlinearForm extends React.Component {
    constructor(props) {
       super(props)
       this.state = {
+         mainlang: props.interlinear ? props.interlinear.mainlang : '',
          title: props.interlinear ? props.interlinear.title : '',
          lines: props.interlinear ? props.interlinear.lines : '',
          createdAt: props.interlinear ? moment(props.interlinear.createdAt) : moment()
+      }
+   }
+
+
+   onMainLangChange = (e) => {
+      const mainlang = e.target.value
+      if(!mainlang || mainlang.match(/^[a-z]+$/)) {
+         this.setState(() => ({ mainlang }))
       }
    }
 
@@ -37,6 +46,7 @@ export default class InterlinearForm extends React.Component {
       } else {
          this.setState(() => ({ error: '' }))
          this.props.onSubmit({
+            mainlang: this.state.mainlang,
             title: this.state.title,
             lines: this.state.lines,
             createdAt: this.state.createdAt.valueOf()
@@ -51,8 +61,14 @@ export default class InterlinearForm extends React.Component {
             <form onSubmit={this.onSubmit}>
                <input
                   type="text"
-                  placeholder="title"
+                  placeholder="mainlang"
                   autoFocus
+                  value={this.state.mainlang}
+                  onChange={this.onMainLangChange}
+               />
+               <input
+                  type="text"
+                  placeholder="title"
                   value={this.state.title}
                   onChange={this.onTitleChange}
                />
