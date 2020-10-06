@@ -29,11 +29,12 @@ export class ViewText extends React.Component {
         } else {
             let idx = 0;
             const thelines = Object.entries(this.state.lines).map(line => {
-                if(line[1]["one"] || line[1]["two"]) {
+                if(line[1]["main"]) {
                     return (
                         <div className="word-column" key={idx++}>
-                            <div>{line[1]["one"]}</div>
-                            <div>{line[1]["two"]}</div>
+                            <div>{line[1]["phonetic"]}</div>
+                            <div>{line[1]["main"]}</div>
+                            <div>{line[1]["verbatim"]}</div>
                         </div>
                     )
                 } else {
