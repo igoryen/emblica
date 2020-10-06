@@ -25,6 +25,11 @@ export default (state = filtersReducerDefaultState, action) => {
                 ...state,
                 sortBy: 'mainlang'
             }
+        case 'SORT_BY_MAIN_AUTHOR':
+            return {
+                ...state,
+                sortBy: 'mainauthor'
+            }
         default:
             return state
     }

@@ -14,10 +14,11 @@ export const startAddInterlinear = (interlinearData = {}) => {
         const {
             mainlang = '',
             title = '',
+            mainauthor = '',
             lines = [],
             createdAt = 0
         } = interlinearData
-        const interlinear = { mainlang, title, lines, createdAt }
+        const interlinear = { mainlang, title, mainauthor, lines, createdAt }
 
         return database.ref(`users/${uid}/interlinears`).push(interlinear).then((ref) => {
             dispatch(addInterlinear(

@@ -8,6 +8,7 @@ export default class InterlinearForm extends React.Component {
       this.state = {
          mainlang: props.interlinear ? props.interlinear.mainlang : '',
          title: props.interlinear ? props.interlinear.title : '',
+         mainauthor: props.interlinear ? props.interlinear.mainauthor : '',
          lines: props.interlinear ? props.interlinear.lines : '',
          createdAt: props.interlinear ? moment(props.interlinear.createdAt) : moment()
       }
@@ -25,6 +26,13 @@ export default class InterlinearForm extends React.Component {
       const title = e.target.value
       if(!title || title.match(/^[A-Za-zА-Яа-я0-9ёЁáéíóúýÁÉÍÓÚÝñÑüÜ -]+$/)) {
          this.setState(() => ({ title }))
+      }
+   }
+
+   onMainAuthorChange = (e) => {
+      const mainauthor = e.target.value
+      if(!mainauthor || mainauthor.match(/^[A-Za-zА-Яа-я0-9ёЁáéíóúýÁÉÍÓÚÝñÑüÜ -]+$/)) {
+         this.setState(() => ({ mainauthor }))
       }
    }
 
@@ -48,6 +56,7 @@ export default class InterlinearForm extends React.Component {
          this.props.onSubmit({
             mainlang: this.state.mainlang,
             title: this.state.title,
+            mainauthor: this.state.mainauthor,
             lines: this.state.lines,
             createdAt: this.state.createdAt.valueOf()
          })
@@ -65,6 +74,12 @@ export default class InterlinearForm extends React.Component {
                   autoFocus
                   value={this.state.mainlang}
                   onChange={this.onMainLangChange}
+               />
+               <input
+                  type="text"
+                  placeholder="author"
+                  value={this.state.mainauthor}
+                  onChange={this.onMainAuthorChange}
                />
                <input
                   type="text"

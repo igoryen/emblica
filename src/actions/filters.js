@@ -23,3 +23,8 @@ export const sortByMainLang = () => (
     }
 )
 
+export const sortByMainAuthor = () => (
+    {
+        type: 'SORT_BY_MAIN_AUTHOR'
+    }
+)
