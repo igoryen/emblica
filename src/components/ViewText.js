@@ -32,9 +32,9 @@ export class ViewText extends React.Component {
                 if(line[1]["main"]) {
                     return (
                         <div className="word-column" key={idx++}>
-                            <div>{line[1]["phonetic"]}</div>
-                            <div>{line[1]["main"]}</div>
-                            <div>{line[1]["verbatim"]}</div>
+                            <div className="word-column__main">{line[1]["main"]}</div>
+                            <div className="word-column__phonetic">{line[1]["phonetic"]}</div>
+                            <div className="word-column__verbatim">{line[1]["verbatim"]}</div>
                         </div>
                     )
                 } else {
