@@ -20,6 +20,11 @@ export default (state = filtersReducerDefaultState, action) => {
                 ...state,
                 sortBy: 'date'
             }
+        case 'SORT_BY_MAIN_LANG':
+            return {
+                ...state,
+                sortBy: 'mainlang'
+            }
         default:
             return state
     }

@@ -5,6 +5,8 @@ export default (interlinears, { text, sortBy }) => {
             textMatch = interlinear.title.toLowerCase().includes(text.toLowerCase())
         } else if (sortBy === 'date') {
             textMatch = interlinear.date.toLowerCase().includes(text.toLowerCase())
+        } else if (sortBy === 'mainlang') {
+            textMatch = interlinear.mainlang.toLowerCase().includes(text.toLowerCase())
         }
         return textMatch
     }).sort((a, b) => {
@@ -12,6 +14,9 @@ export default (interlinears, { text, sortBy }) => {
             return a.title < b.title ? -1 : 1
         } else if ( sortBy === 'date') {
             return a.date < b.date ? 1 : -1
+        }
+        else if ( sortBy === 'mainlang') {
+            return a.mainlang < b.mainlang ? 1 : -1
         }
     })
 }
