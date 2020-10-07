@@ -35,15 +35,18 @@ code {
 .word-column__main {
   font-weight: bold;
   font-size: large;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .word-column__phonetic {
   color: darkblue;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 .word-column__verbatim {
   color: #af3a00;
   font-style: italic;
+  font-family: 'Open Sans', sans-serif;
 }
 
 /*****/
