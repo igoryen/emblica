@@ -35,18 +35,18 @@ code {
 .word-column__main {
   font-weight: bold;
   font-size: large;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .word-column__phonetic {
   color: darkblue;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 
 .word-column__verbatim {
   color: #af3a00;
   font-style: italic;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 /*****/
@@ -90,4 +90,31 @@ code {
   display: flex;
   justify-content: space-between;
   padding: 1em;
+}
+
+.text-controls__container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5em;
+  padding-top: 1em;
+}
+
+.text-control__removal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*===============================*/
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ReactModal__Content.ReactModal__Content--after-open {
+  display: flex;
+  flex-direction: column;
+  position: unset !important;
 }

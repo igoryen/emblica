@@ -3,6 +3,7 @@ import moment from 'moment'
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
 import { startRemoveInterlinear } from '../actions/interlinears'
+import ReactModal from 'react-modal'
 
 export class ViewText extends React.Component {
 
@@ -13,7 +14,18 @@ export class ViewText extends React.Component {
             title: props.interlinear ? props.interlinear.title : 'no title',
             lines: props.interlinear ? props.interlinear.lines : 'no lines',
             createdAt: props.interlinear ? moment(props.interlinear.createdAt) : moment(),
+            showRemoveConfirmationModal: false
         }
+        this.handleOpenModal = this.handleOpenModal.bind(this);
+        this.handleCloseModal = this.handleCloseModal.bind(this);
+    }
+
+    handleOpenModal() {
+        this.setState({ showModal: true });
+    }
+
+    handleCloseModal() {
+        this.setState({ showModal: false });
     }
 
     onRemove = () => {
@@ -29,7 +41,7 @@ export class ViewText extends React.Component {
         } else {
             let idx = 0;
             const thelines = Object.entries(this.state.lines).map(line => {
-                if(line[1]["main"]) {
+                if (line[1]["main"]) {
                     return (
                         <div className="word-column" key={idx++}>
                             <div className="word-column__main">{line[1]["main"]}</div>
@@ -39,7 +51,7 @@ export class ViewText extends React.Component {
                     )
                 } else {
                     return (
-                        <hr key={idx++}/>
+                        <hr key={idx++} />
                     )
                 }
             })
@@ -50,7 +62,23 @@ export class ViewText extends React.Component {
                     <div className="lines">{thelines}</div>
                     <div className="text-controls">
                         <Link to={`/edit/${this.state.id}`}>Edit text</Link>
-                        <button onClick={this.onRemove}>Remove</button>
+                        <button onClick={this.handleOpenModal}>Remove</button>
+                        <ReactModal
+                            appElement={document.getElementById('root')}
+                            isOpen={this.state.showModal}
+                            contentLabel="onRequestClose Example"
+                            onRequestClose={this.handleCloseModal}
+                        >
+                            <div className="text-control__removal">
+                                <h3>"{this.state.title}"</h3> 
+                                <h2>will be removed!</h2>
+                            </div>
+                            <div className="text-controls__container">
+                                <button onClick={this.handleCloseModal}>Abort</button>
+                                <button onClick={this.onRemove}>Yes, remove the text</button>
+                            </div>
+
+                        </ReactModal>
                     </div>
                 </div>
             )
