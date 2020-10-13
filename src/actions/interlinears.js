@@ -10,17 +10,17 @@ export const addInterlinear = (interlinear) => (
 
 export const startAddInterlinear = (interlinearData = {}) => {
     return (dispatch, getState) => {
-        const uid = getState().auth.uid
         const {
+            uid = getState().auth.uid,
             mainlang = '',
             title = '',
             mainauthor = '',
             lines = [],
             createdAt = 0
         } = interlinearData
-        const interlinear = { mainlang, title, mainauthor, lines, createdAt }
+        const interlinear = { uid, mainlang, title, mainauthor, lines, createdAt }
 
-        return database.ref(`users/${uid}/interlinears`).push(interlinear).then((ref) => {
+        return database.ref(`interlinears`).push(interlinear).then((ref) => {
             dispatch(addInterlinear(
                 {
                     id: ref.key,
@@ -30,6 +30,7 @@ export const startAddInterlinear = (interlinearData = {}) => {
         })
     }
 }
+
 
 export const removeInterlinear = ({ id } = {}) => {
     return {
@@ -55,9 +56,8 @@ export const setInterlinears = (interlinears) => (
 )
 
 export const startSetInterlinears = () => {
-    return (dispatch, getState) => {
-        const uid = getState().auth.uid
-        return database.ref(`users/${uid}/interlinears`).once('value').then((snapshot) => {
+    return (dispatch) => {
+        return database.ref(`interlinears`).once('value').then((snapshot) => {
             const interlinears = []
 
             snapshot.forEach((childSnapshot) => {
@@ -72,10 +72,9 @@ export const startSetInterlinears = () => {
 }
 
 export const startRemoveInterlinear = ({id} = {}) => {
-    return(dispatch, getState) => {
-        const uid = getState().auth.uid
+    return(dispatch) => {
         return database
-            .ref(`users/${uid}/interlinears/${id}`)
+            .ref(`interlinears/${id}`)
             .remove()
             .then(() => {
                 dispatch(removeInterlinear({id}))
@@ -83,11 +82,11 @@ export const startRemoveInterlinear = ({id} = {}) => {
     }
 }
 
+
 export const startEditInterlinear = (id, updates) => {
-    return (dispatch, getState) => {
-        const uid = getState().auth.uid
+    return (dispatch) => {
         return database
-            .ref(`users/${uid}/interlinears/${id}`)
+            .ref(`interlinears/${id}`)
             .update(updates)
             .then(() =>{
                 dispatch(editInterlinear(id, updates))

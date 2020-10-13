@@ -1,14 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { startLogout } from '../actions/auth'
+import { startLogout, startLogin } from '../actions/auth'
 
-export const Header = ({ startLogout }) => (
+export const Header = (props) => (
     <header>
-        <div className="header">
-            <Link to="/dashboard"><h3>Emblica</h3></Link>
+        <div className={props.isAuthenticated ? "header__manned" : "header__unmanned"}>
+            <Link to="/"><h3>Emblica</h3></Link>
             <div>
-                <button onClick={startLogout}>Logout</button>
+                {
+                    props.isAuthenticated
+                    ? <button onClick={props.startLogout}>Log Out</button>
+                    : <button onClick={props.startLogin}>Log In</button>
+                }
             </div>
 
         </div>
@@ -16,7 +20,14 @@ export const Header = ({ startLogout }) => (
 )
 
 const mapDispatchToProps = (dispatch) => ({
-    startLogout: () => dispatch(startLogout())
+    startLogout: () => dispatch(startLogout()),
+    startLogin: () => dispatch(startLogin())
 })
 
-export default connect(undefined, mapDispatchToProps)(Header)
+const mapStateToProps = (state) => {
+    return  {
+        isAuthenticated: !!state.auth.uid
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
