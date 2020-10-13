@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
-import AppRouter, { history } from './routers/AppRouter'
+import AppRouter from './routers/AppRouter'
 import configureStore from './store/configureStore'
 import { startSetInterlinears } from './actions/interlinears'
 import { login, logout } from './actions/auth'
@@ -29,20 +29,15 @@ const renderApp = () => {
 
 ReactDOM.render(<LoadingPage />, document.getElementById('root'))
 
+store.dispatch(startSetInterlinears()).then(() => {
+  renderApp()
+});
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         store.dispatch(login(user.uid))
-        store.dispatch(startSetInterlinears()).then(() => {
-            renderApp()
-            if(history.location.pathname === '/') {
-                history.push('/dashboard')
-            }
-        });
     } else {
         store.dispatch(logout())
-        renderApp()
-        history.push('/')
     }
 })
 

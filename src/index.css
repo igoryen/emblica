@@ -51,8 +51,16 @@ code {
 
 /*****/
 
-.header {
+.header__manned {
   background-color: #ffda9a;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5em;
+}
+
+.header__unmanned {
+  background-color: #e6e6e6;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

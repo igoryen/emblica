@@ -14,7 +14,7 @@ export class ViewText extends React.Component {
             title: props.interlinear ? props.interlinear.title : 'no title',
             lines: props.interlinear ? props.interlinear.lines : 'no lines',
             createdAt: props.interlinear ? moment(props.interlinear.createdAt) : moment(),
-            showRemoveConfirmationModal: false
+            textAuthor: props.interlinear ? props.interlinear.uid : 'n/a'
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -60,26 +60,30 @@ export class ViewText extends React.Component {
                 <div className="emblica-body">
                     <div className="text-title"><h2>{this.state.title}</h2></div>
                     <div className="lines">{thelines}</div>
-                    <div className="text-controls">
-                        <Link to={`/edit/${this.state.id}`}>Edit text</Link>
-                        <button onClick={this.handleOpenModal}>Remove</button>
-                        <ReactModal
-                            appElement={document.getElementById('root')}
-                            isOpen={this.state.showModal}
-                            contentLabel="onRequestClose Example"
-                            onRequestClose={this.handleCloseModal}
-                        >
-                            <div className="text-control__removal">
-                                <h3>"{this.state.title}"</h3> 
-                                <h2>will be removed!</h2>
-                            </div>
-                            <div className="text-controls__container">
-                                <button onClick={this.handleCloseModal}>Abort</button>
-                                <button onClick={this.onRemove}>Yes, remove the text</button>
-                            </div>
 
-                        </ReactModal>
-                    </div>
+                    { (this.props.isAuthenticated && (this.props.activeUser === this.state.textAuthor)) &&
+
+                        <div className="text-controls">
+                            <Link to={`/edit/${this.state.id}`}>Edit text</Link>
+                            <button onClick={this.handleOpenModal}>Remove</button>
+                            <ReactModal
+                                appElement={document.getElementById('root')}
+                                isOpen={this.state.showModal}
+                                contentLabel="onRequestClose Example"
+                                onRequestClose={this.handleCloseModal}
+                            >
+                                <div className="text-control__removal">
+                                    <h3>"{this.state.title}"</h3>
+                                    <h2>will be removed!</h2>
+                                </div>
+                                <div className="text-controls__container">
+                                    <button onClick={this.handleCloseModal}>Abort</button>
+                                    <button onClick={this.onRemove}>Yes, remove the text</button>
+                                </div>
+
+                            </ReactModal>
+                        </div>
+                    }
                 </div>
             )
         }
@@ -90,4 +94,11 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch
 })
 
-export default connect(null, mapDispatchToProps)(ViewText)
+const mapStateToProps = (state) => {
+    return {
+        isAuthenticated: !!state.auth.uid,
+        activeUser: state.auth.uid
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewText)
