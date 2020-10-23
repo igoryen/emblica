@@ -14,10 +14,25 @@ export class ViewText extends React.Component {
             title: props.interlinear ? props.interlinear.title : 'no title',
             lines: props.interlinear ? props.interlinear.lines : 'no lines',
             createdAt: props.interlinear ? moment(props.interlinear.createdAt) : moment(),
-            textAuthor: props.interlinear ? props.interlinear.uid : 'n/a'
+            textAuthor: props.interlinear ? props.interlinear.uid : 'n/a',
+            lineMainIsHidden: false,
+            linePhoneticIsHidden: false,
+            lineVerbatimIsHidden: false,
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
+    }
+
+    toggleHiddenMain(event) {
+        event.target.checked ? this.setState({ lineMainIsHidden: true }) : this.setState({ lineMainIsHidden: false })
+    }
+
+    toggleHiddenPhonetic(event) {
+        event.target.checked ? this.setState({ linePhoneticIsHidden: true }) : this.setState({ linePhoneticIsHidden: false })
+    }
+
+    toggleHiddenVerbatim(event) {
+        event.target.checked ? this.setState({ lineVerbatimIsHidden: true }) : this.setState({ lineVerbatimIsHidden: false })
     }
 
     handleOpenModal() {
@@ -44,9 +59,9 @@ export class ViewText extends React.Component {
                 if (line[1]["main"]) {
                     return (
                         <div className="word-column" key={idx++}>
-                            <div className="word-column__main">{line[1]["main"]}</div>
-                            <div className="word-column__phonetic">{line[1]["phonetic"]}</div>
-                            <div className="word-column__verbatim">{line[1]["verbatim"]}</div>
+                            {!this.state.lineMainIsHidden &&<div className="word-column__main">{line[1]["main"]}</div>}
+                            {!this.state.linePhoneticIsHidden &&<div className="word-column__phonetic">{line[1]["phonetic"]}</div>}
+                            {!this.state.lineVerbatimIsHidden &&<div className="word-column__verbatim">{line[1]["verbatim"]}</div>}
                         </div>
                     )
                 } else {
@@ -58,6 +73,11 @@ export class ViewText extends React.Component {
 
             return (
                 <div className="emblica-body">
+                    <div className="line-vis-toggles">
+                        <label><input type="checkbox" name="linemain" onChange={(event) => this.toggleHiddenMain(event)}/>Hide Main</label>
+                        <label><input type="checkbox" name="linemain" onChange={(event) => this.toggleHiddenPhonetic(event)}/>Hide Phonetic</label>
+                        <label><input type="checkbox" name="linemain" onChange={(event) => this.toggleHiddenVerbatim(event)}/>Hide Verbatim</label>
+                    </div>
                     <div className="text-title"><h2>{this.state.title}</h2></div>
                     <div className="lines">{thelines}</div>
 
