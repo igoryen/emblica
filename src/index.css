@@ -23,13 +23,14 @@ code {
 
 .lines hr {
   border: none;
+  margin: 0.2em;
   width: 100%;
 }
 
 .word-column {
   display: flex;
   flex-direction: column;
-  margin: 0 1em 1em 0;
+  margin: 0 0.3em .5em 0;
 }
 
 .word-column__main {
@@ -111,6 +112,16 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.line-vis-toggles {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.line-vis-toggles label {
+  margin-left: 0.5em;
+  padding: 0.1em;
 }
 
 /*===============================*/
