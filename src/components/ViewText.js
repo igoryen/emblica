@@ -57,27 +57,49 @@ export class ViewText extends React.Component {
             let idx = 0;
             const thelines = Object.entries(this.state.lines).map(line => {
                 if (line[1]["main"]) {
-                    return (
-                        <div className="word-column" key={idx++}>
-                            {!this.state.lineMainIsHidden &&<div className="word-column__main">{line[1]["main"]}</div>}
-                            {!this.state.linePhoneticIsHidden &&<div className="word-column__phonetic">{line[1]["phonetic"]}</div>}
-                            {!this.state.lineVerbatimIsHidden &&<div className="word-column__verbatim">{line[1]["verbatim"]}</div>}
-                        </div>
-                    )
+                    if(line[1]["phonetic"]) {
+                        return (
+                            <div className="word-column" key={idx++}>
+                                {!this.state.lineMainIsHidden &&<div className="word-column__main">{line[1]["main"]}</div>}
+                                {!this.state.linePhoneticIsHidden &&<div className="word-column__phonetic">{line[1]["phonetic"]}</div>}
+                                {!this.state.lineVerbatimIsHidden &&<div className="word-column__verbatim">{line[1]["verbatim"]}</div>}
+                            </div>
+                        )
+                    } else {
+                        return (
+                            <div className="word-column" key={idx++}>
+                                {!this.state.lineMainIsHidden &&<div className="word-column__main">{line[1]["main"]}</div>}
+                                {!this.state.lineVerbatimIsHidden &&<div className="word-column__verbatim">{line[1]["verbatim"]}</div>}
+                            </div>
+                        )
+                    }
                 } else {
                     return (
                         <hr key={idx++} />
                     )
                 }
             })
-
-            return (
-                <div className="emblica-body">
+            let visibilityControls
+            if(this.state.lines[1]["phonetic"]) { 
+                visibilityControls = (
                     <div className="line-vis-toggles">
                         <label><input type="checkbox" name="linemain" onChange={(event) => this.toggleHiddenMain(event)}/>Hide Main</label>
                         <label><input type="checkbox" name="linemain" onChange={(event) => this.toggleHiddenPhonetic(event)}/>Hide Phonetic</label>
                         <label><input type="checkbox" name="linemain" onChange={(event) => this.toggleHiddenVerbatim(event)}/>Hide Verbatim</label>
                     </div>
+                )
+            } else {
+                visibilityControls = (
+                    <div className="line-vis-toggles">
+                        <label><input type="checkbox" name="linemain" onChange={(event) => this.toggleHiddenMain(event)}/>Hide Main</label>
+                        <label><input type="checkbox" name="linemain" onChange={(event) => this.toggleHiddenVerbatim(event)}/>Hide Verbatim</label>
+                    </div>
+                )
+            }
+
+            return (
+                <div className="emblica-body">
+                    {visibilityControls}
                     <div className="text-title"><h2>{this.state.title}</h2></div>
                     <div className="lines">{thelines}</div>
 
