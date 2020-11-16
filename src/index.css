@@ -30,7 +30,7 @@ code {
 .word-column {
   display: flex;
   flex-direction: column;
-  margin: 0 0.6em .5em 0;
+  margin: 0 0.6em .5em 0.2em;
 }
 
 .word-column__main {
@@ -41,11 +41,12 @@ code {
 
 .word-column__phonetic {
   color: darkblue;
+  font-size: large;
   font-family: "Fira Sans", sans-serif;
 }
 
 .word-column__verbatim {
-  color: #af3a00;
+  color: #993300;
   font-style: italic;
   font-family: "Open Sans", sans-serif;
 }
